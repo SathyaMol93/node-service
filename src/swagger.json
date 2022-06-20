@@ -1,0 +1,482 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Official api documentation for SAP mobile app development. Below document contains all the relevent detail regarding the back end APIs of the sap mobile app development project",
+    "version": "1.0.0",
+    "title": "SAP NodeJs BACKEND API DOCUMENTATION",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "say_hi@sathyamolagoda.me"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Public Forms",
+      "description": "Form for public inquiries"
+    },
+    {
+      "name": "Personal Forms",
+      "description": "Forms for personal matters"
+    },
+    {
+      "name": "Job Forms",
+      "description": "Forms for job requests"
+    },
+    {
+      "name": "DS Division",
+      "description": "Forms for job requests"
+    },
+    {
+      "name": "GN Division",
+      "description": "Forms for job requests"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/public_form": {
+      "post": {
+        "tags": [
+          "Public Forms"
+        ],
+        "summary": "Add a new public form to system",
+        "description": "",
+        "operationId": "addPublicForm",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Public form object needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PublicInquiries"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/personal_form": {
+      "post": {
+        "tags": [
+          "Personal Forms"
+        ],
+        "summary": "Add a new personal form to system",
+        "description": "",
+        "operationId": "addPersonalForm",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Personal form object needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PersonalInquiries"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/job_form": {
+      "post": {
+        "tags": [
+          "Job Forms"
+        ],
+        "summary": "Add a new job form to system",
+        "description": "",
+        "operationId": "addJobForm",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Job form object needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JobInquiries"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/ds_division": {
+      "get": {
+        "tags": [
+          "DS Division"
+        ],
+        "summary": "Finds all DS Division",
+        "description": "search all the ds divisions",
+        "operationId": "findAllDsDivisions",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/ds_division/byDistricId": {
+      "get": {
+        "tags": [
+          "DS Division"
+        ],
+        "summary": "Finds DS Division ByDistric Id",
+        "description": "search ds divisions by distric id",
+        "operationId": "findByDistricId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "districId",
+            "in": "query",
+            "description": "Dristrict id values that need to be considered for filter",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/gn_division": {
+      "get": {
+        "tags": [
+          "GN Division"
+        ],
+        "summary": "Finds all DS Division",
+        "description": "search all the ds divisions",
+        "operationId": "findAllGnDivisions",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/gn_division/byDistricId": {
+      "get": {
+        "tags": [
+          "GN Division"
+        ],
+        "summary": "Finds all DS Division",
+        "description": "search all the ds divisions",
+        "operationId": "findByDsDivisionId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "dsDivisionId",
+            "in": "query",
+            "description": "Dristrict id values that need to be considered for filter",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly saved"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DsDivision": {
+      "type": "object",
+      "properties": {
+        "ds_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "distric_id": {
+          "type": "integer"
+        },
+        "division_code": {
+          "type": "string"
+        },
+        "division_name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "DsDivision"
+      }
+    },
+    "GnDivision": {
+      "type": "object",
+      "properties": {
+        "ng_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ds_division_id": {
+          "type": "integer"
+        },
+        "division_code": {
+          "type": "string"
+        },
+        "gn_division_name": {
+          "type": "string"
+        },
+        "division_no": {
+          "type": "string"
+        },
+        "gn_division_code": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "GnDivision"
+      }
+    },
+    "PublicInquiries": {
+      "type": "object",
+      "properties": {
+        "public_inquiries_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ds_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gn_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "inquiry": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "inquiry_type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "PublicInquiries"
+      }
+    },
+    "JobInquiries": {
+      "type": "object",
+      "properties": {
+        "job_inquiries_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ds_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gn_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "inquiry": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string",
+          "format": "int64"
+        },
+        "inquiry_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "contact_no": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "highest_education": {
+          "type": "string"
+        },
+        "job": {
+          "type": "string"
+        },
+        "job_experience": {
+          "type": "string"
+        },
+        "home_town": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "JobInquiriesModel"
+      }
+    },
+    "PersonalInquiries": {
+      "type": "object",
+      "properties": {
+        "personel_inquiries_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ds_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gn_division_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "inquiry": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string",
+          "format": "int64"
+        },
+        "inquiry_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "contact_no": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "PersonalInquiries"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
